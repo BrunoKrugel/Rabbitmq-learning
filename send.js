@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var amqp = require('amqplib/callback_api');
+const prompt = require('prompt-sync')();
 
 amqp.connect('amqp://localhost', function (error0, connection) {
     if (error0) {
@@ -12,7 +13,7 @@ amqp.connect('amqp://localhost', function (error0, connection) {
         }
 
         var queue = 'hello';
-        var msg = 'cu';
+        var msg = prompt();
 
         channel.assertQueue(queue, {
             durable: false
